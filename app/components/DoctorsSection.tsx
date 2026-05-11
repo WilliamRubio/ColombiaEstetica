@@ -1,43 +1,31 @@
-const doctors = [
-  {
-    name: "Dr. Alejandro Morales",
-    specialty: "Facial & Rhinoplasty Surgery",
-    experience: "18 Years Experience",
-    description:
-      "Dr. Morales is a double board-certified plastic surgeon specializing in facial aesthetics and rhinoplasty. He trained at leading institutions in the US and Europe and is recognized for his meticulous, natural-looking results.",
-    credentials: ["Board Certified – SCCP", "Fellow – ISAPS", "Trained – Mayo Clinic"],
-  },
-  {
-    name: "Dr. Valentina Ríos",
-    specialty: "Body Contouring & Breast Surgery",
-    experience: "14 Years Experience",
-    description:
-      "Dr. Ríos is an internationally trained specialist in body contouring, liposuction, and breast aesthetics. Her approach prioritizes patient safety, personalized planning, and achieving proportional, elegant results.",
-    credentials: ["Board Certified – SCCP", "Member – ASPS", "Trained – Paris & Bogotá"],
-  },
-];
+"use client";
+import { useLang } from "../context/LanguageContext";
+import { translations } from "../translations";
 
 export default function DoctorsSection() {
+  const { lang } = useLang();
+  const t = translations[lang].doctors;
+
   return (
     <section id="doctors" className="py-24 section-alt">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-block text-[#b8974a] text-sm font-semibold tracking-widest uppercase mb-3">
-            Meet the Team
+            {t.label}
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-[#1c1c1e] mb-4">
-            Our Surgeons
+            {t.title}
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            Board-certified, internationally trained, and dedicated to delivering exceptional, personalized outcomes for every patient.
+            {t.description}
           </p>
           <div className="mt-4 w-16 h-1 mx-auto rounded-full" style={{ background: "linear-gradient(90deg, #b8974a, #d4af6a)" }} />
         </div>
 
         {/* Doctor cards */}
         <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-          {doctors.map((doctor) => (
+          {t.items.map((doctor) => (
             <div
               key={doctor.name}
               className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
@@ -54,7 +42,7 @@ export default function DoctorsSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <span className="text-white/40 text-xs tracking-widest uppercase">Photo Placeholder</span>
+                  <span className="text-white/40 text-xs tracking-widest uppercase">{t.photoPlaceholder}</span>
                 </div>
                 {/* Experience badge */}
                 <div className="absolute bottom-4 right-4 px-3 py-1.5 rounded-full text-xs font-bold" style={{ background: "linear-gradient(135deg, #b8974a 0%, #d4af6a 100%)", color: "#1a4a6b" }}>
@@ -85,7 +73,7 @@ export default function DoctorsSection() {
                   href="#contact"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-[#1a4a6b] hover:text-[#b8974a] transition-colors group"
                 >
-                  Meet the Doctor
+                  {t.requestConsultation}
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

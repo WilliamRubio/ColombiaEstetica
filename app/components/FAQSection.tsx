@@ -1,41 +1,12 @@
 "use client";
 import { useState } from "react";
-
-const faqs = [
-  {
-    question: "Is plastic surgery in Colombia safe?",
-    answer:
-      "Yes. Colombia has internationally accredited medical facilities and surgeons with world-class training. Our partner clinic holds ISO and ACHC accreditations. We only work with board-certified plastic surgeons with a verifiable track record. As with any surgery anywhere in the world, procedures carry risks — which is why our pre-surgical evaluation and aftercare protocols are rigorous.",
-  },
-  {
-    question: "How long should I stay in Colombia?",
-    answer:
-      "The recommended stay varies by procedure. Rhinoplasty typically requires 7–10 days, liposuction 10–14 days, and breast surgery 7–10 days. Your surgeon will provide a specific recommendation based on your individual case and recovery progress.",
-  },
-  {
-    question: "Do you offer virtual consultations?",
-    answer:
-      "Yes. We offer secure, private video consultations with your assigned surgeon before you travel. This allows you to ask questions, review your goals, and receive an initial assessment — all from the comfort of your home.",
-  },
-  {
-    question: "What is included in the package?",
-    answer:
-      "Our all-inclusive packages typically cover the surgical procedure, anesthesia, hospital stay, pre-operative tests, post-operative compression garments, medication, and follow-up appointments in Colombia. Airport transfers and accommodation options are also available. You will receive a detailed, itemized quote with no hidden fees.",
-  },
-  {
-    question: "Can I communicate in English?",
-    answer:
-      "Absolutely. Our entire patient coordination team is bilingual (English/Spanish). Your surgeon speaks English, and all written communications, consent forms, and medical documents are provided in English.",
-  },
-  {
-    question: "How do I start?",
-    answer:
-      "Simply fill out the consultation form below or message us on WhatsApp. A patient coordinator will reach out within 24 hours to schedule your virtual consultation and answer any initial questions.",
-  },
-];
+import { useLang } from "../context/LanguageContext";
+import { translations } from "../translations";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { lang } = useLang();
+  const t = translations[lang].faq;
 
   return (
     <section id="faq" className="py-24 bg-white">
@@ -43,20 +14,20 @@ export default function FAQSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-block text-[#b8974a] text-sm font-semibold tracking-widest uppercase mb-3">
-            Common Questions
+            {t.label}
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-[#1c1c1e] mb-4">
-            Frequently Asked Questions
+            {t.title}
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to know before starting your medical journey with us.
+            {t.description}
           </p>
           <div className="mt-4 w-16 h-1 mx-auto rounded-full" style={{ background: "linear-gradient(90deg, #b8974a, #d4af6a)" }} />
         </div>
 
         {/* FAQ accordion */}
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {t.items.map((faq, index) => (
             <div
               key={index}
               className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
@@ -103,15 +74,15 @@ export default function FAQSection() {
 
         {/* More questions CTA */}
         <div className="mt-12 text-center p-8 rounded-2xl" style={{ background: "#f9f6f0" }}>
-          <p className="text-[#1c1c1e] font-semibold mb-2">Still have questions?</p>
-          <p className="text-gray-500 text-sm mb-6">Our patient coordinators are available 7 days a week to help you.</p>
+          <p className="text-[#1c1c1e] font-semibold mb-2">{t.stillHaveQuestions}</p>
+          <p className="text-gray-500 text-sm mb-6">{t.coordinatorsAvailable}</p>
           <div className="flex flex-wrap gap-3 justify-center">
             <a
               href="#contact"
               className="px-6 py-3 rounded-full text-sm font-bold text-white transition-all duration-200 hover:shadow-lg"
               style={{ background: "#1a4a6b" }}
             >
-              Contact Us
+              {t.contactUs}
             </a>
             <a
               href="https://wa.me/1XXXXXXXXXX"
