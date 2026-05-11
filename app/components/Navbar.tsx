@@ -28,12 +28,12 @@ export default function Navbar() {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-5">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-gray-600 hover:text-[#1a4a6b] font-medium transition-colors duration-200 tracking-wide"
+                className="text-sm text-gray-600 hover:text-[#1a4a6b] font-medium transition-colors duration-200 tracking-wide whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -41,7 +41,7 @@ export default function Navbar() {
           </div>
 
           {/* CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
             {/* Language switcher */}
             <button
               onClick={() => setLang(lang === "en" ? "es" : "en")}
@@ -52,7 +52,7 @@ export default function Navbar() {
             </button>
             <a
               href="#contact"
-              className="px-5 py-2.5 text-sm font-semibold rounded-full border-2 border-[#1a4a6b] text-[#1a4a6b] hover:bg-[#1a4a6b] hover:text-white transition-all duration-200"
+              className="px-4 py-2 text-sm font-semibold rounded-full border-2 border-[#1a4a6b] text-[#1a4a6b] hover:bg-[#1a4a6b] hover:text-white transition-all duration-200 whitespace-nowrap"
             >
               {t.consultation}
             </a>
@@ -60,7 +60,7 @@ export default function Navbar() {
               href="https://wa.me/1XXXXXXXXXX"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 text-sm font-semibold rounded-full text-white flex items-center gap-2 transition-all duration-200"
+              className="px-4 py-2 text-sm font-semibold rounded-full text-white flex items-center gap-2 transition-all duration-200 whitespace-nowrap"
               style={{ background: "#25D366" }}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
